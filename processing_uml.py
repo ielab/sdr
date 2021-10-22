@@ -33,16 +33,6 @@ def get_collection_all(collection_file):
         for line in tqdm(f):
             datalist = json.loads(line)
             try:
-                # id = int(datalist["pmid"])
-                # id_list.add(id)
-                # title = datalist["title"]
-                # content = datalist["abstract"]
-                #
-                # new_content = ""
-                # if title != "":
-                #     new_content += title + " " + content
-                # else:
-                #     new_content = content
                 id = int(datalist["id"])
                 new_content = ' '.join(datalist['contents'])
                 doc_dict[id] = new_content
@@ -61,9 +51,7 @@ def process(id):
     umls_match = matcher.match(original_data)
     ranges = set()
     for c in umls_match:
-        #a = c[0]
-        #term = a['ngram']
-        #clinical_set.append(term)
+
         for a in c:
             term = a['term']
             range = (int(a['start']), int(a['end']))
@@ -84,15 +72,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--input_collection", type=str, default="collection/weighted1_bow.jsonl")
     parser.add_argument("--input_umls_dir", type=str, default="umls_data/")
+    parser.add_argument("--num_workers", type=int, default=20)
     parser.add_argument("--output_collection", type=str, default="collection/processed_umls_gensim/")
     args = parser.parse_args()
 
     input_umls = args.input_umls_dir
+    num_of_workers = args.num_of_workers
     input_collection = args.input_collection
     output = args.output_collection
     output_files = glob.glob(output + '*')
-
-    #nlp  = spacy.load('en_core_web_sm')
 
     original_doc, id_list = get_collection_all(args.input_collection)
 
@@ -105,7 +93,6 @@ if __name__ == "__main__":
         print(len(id_list))
 
     id_list = list(id_list)
-    num_of_workers=30
     p = Pool(num_of_workers)
     with p:
         doc_content_list = [[id, original_doc[id]] for id in

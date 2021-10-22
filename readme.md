@@ -35,20 +35,41 @@ Please cat thee two files together to make 2019_full.txt, and also 2019_test.txt
 ```
 Then you can generate query and evaluation file by:
 ```
+For snigle:
 python3 topic_query_generation.py --input_qrel qrel_file_for_training+testing --input_test_qrel qrel_file_for_testing --DATA_DIR output_dir
-```
 
-For collection generation, we need to first acquire all pmids used in the collection usinng:
+For multiple:
+python3 topic_query_generation_multiple.py --input_qrel qrel_file_for_training+testing --input_test_qrel qrel_file_for_testing --DATA_DIR output_dir
+
+```
+Please note: you need to generate for each year and put in seperate folder, not the overall one.
+
+
+### Collection generation:
+
+For BOW collection generation, following commond is needed
 ```
 python3 gather_all_pids.py --filenames 2017_full.txt+2018_full.txt+2019_full.txt --output_dir collection/pid_dir --chunks n
-```
-
-Then to acquire all pubmed title+abstract using
-```
 python3 collection_gathering.py --filename yourpidsfile --email xxx@email.com --output output_collection
+python3 collection_processing.py --input_collection acquired_collection_file --output_collection processed_file(default is weighted1_bow.jsonl)
 ```
 
-Then you can process the col
+Then for BOC collection generation, first ensure to check [Quickumls](https://github.com/Georgetown-IR-Lab/QuickUMLS) to gether umls data first.
+For boc collection then, run following command to generation boc_collection:
+```
+python3 ncbo_request_word.py --input_collection your_generated_bow_collection --num_workers for_multi_procesing --generated_collection output_dir_ncbo
+cat output_dir/* > ncbo.tsv
+python3 processing_uml.py --input_collection your_bow_collection --input_umls_dir your_output_umls_dir --num_workers for_multi_procesing
+python3 processing_umls_word.py --input_collection your_generated_bow_collection --input_umls_dir your_output_umls_dir_from_last_step --output_file umls.tsv
+python3 boc_extraction.py --input_collection bow_collection --input_ncbo_collection ncbo.tsv --input_umls_collection umls.tsv --output_collection processed_file(default is weighted1_boc.jsonl)
+```
+
+### RQ1: Does the effectiveness of SDR generalise beyond the CLEF TAR 2017 dataset?
+
+For this question, we can run our 
+
+
+
 
 
 

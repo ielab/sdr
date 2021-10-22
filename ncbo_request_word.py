@@ -60,11 +60,7 @@ def getdict(word_set):
         url_new = url + "text=" + word + '&longest_only=true&exclude_numbers=false&whole_word_only=true&exclude_synonyms=true&apikey=' + api_key[word_index % api_len]
         word_list.append(word)
         word_dic[word] = url_new
-    # for word_index, word in tqdm(enumerate(word_set)):
-    #     word_list.append(word)
-    #     new_dict['text'] = word
-    #     new_dict['apikey'] = api_key[word_index % api_len],
-    #     word_dic[word] = new_dict
+
     return word_dic, word_list
 
 
@@ -74,6 +70,7 @@ if __name__ == "__main__":
     parser.add_argument("--num_workers", type=int, default=20)
     parser.add_argument('--generated_collection', type=str, default="non_setting")
     args = parser.parse_args()
+    DATA_DIR = args.generated_collection
     input = args.input_collection
     num_of_workers = args.num_workers
     word_set = get_collection_word(input)

@@ -47,23 +47,6 @@ if __name__ == "__main__":
                 output.write(word + '\t' + term + '\n')
 
 
-            # if len(umls_match[0]==0):
-            #     print(word, '0 is 0')
-            #     break
-            # else:
-            #     print(word, 'empty')
-
-
-
-    # id_list = list(id_list)
-    # num_of_workers=30
-    # p = Pool(num_of_workers)
-    # with p:
-    #     doc_content_list = [[id, original_doc[id]] for id in
-    #                         id_list]
-    #     p.map(process, doc_content_list)
-
-
 
 
 
