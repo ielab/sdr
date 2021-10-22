@@ -44,10 +44,10 @@ with open(output+str(weight)+"_bow_punc_removed_lee.jsonl", 'w') as file:
                     new_content = content
                 for i in string_set:
                     new_content = new_content.replace(i, ' ')
-                tokenised_list = new_content.split()
-                #tokenised_list = list(word_tokenize(new_content))
 
-                tokenised_removed = [tok for tok in tokenised_list if tok.lower() not in cachedStopwords]
+                tokenised_list = list(tokenize(new_content))
+
+                tokenised_removed = [tok.lower() for tok in tokenised_list if tok.lower() not in cachedStopwords]
                 new_dic={
                     'id':   int(id),
                 'contents': tokenised_list

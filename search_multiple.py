@@ -88,18 +88,6 @@ def build_sdr_full_model(result_dic, query, query_dic):
     model = SDR_full(corpus, query_dic)
     return pids, model, overall_corpus
 
-
-def build_sdr_compare_model(result_dic, query_dic):
-    corpus = []
-    pids = []
-    for key in result_dic:
-        pids.append(key)
-        list_tokens = result_dic[key]
-        corpus.append(list_tokens)
-    model = SDR_Compare(corpus, query_dic)
-    return pids, model
-
-
 def build_aes_model(result_dic):
     corpus = []
     pids = []

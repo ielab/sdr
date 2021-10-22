@@ -6,13 +6,12 @@ size = 1000
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--input_qrel", type=str, default ="qrel_eval/2019/qrels_content_all.txt")
-parser.add_argument("--input_eval", type=str, default = "qrel_eval/2019/qrels_content_all.txt")
 parser.add_argument("--input_test_eval", type=str, default = "qrel_eval/2019/qrels_content_test.txt")
 parser.add_argument("--DATA_DIR", type=str, default="2019/all")
 args = parser.parse_args()
 
 input_qrel_file = args.input_qrel
-input_eval_file = args.input_eval
+input_eval_file = args.input_qrel
 input_test_eval_file = args.input_test_eval
 output_queries_file = os.path.join(args.DATA_DIR, "input", "queries.tsv")
 output_run_fie = os.path.join(args.DATA_DIR, "input", "run.jsonl")

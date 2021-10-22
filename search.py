@@ -1,7 +1,6 @@
 from gensim.summarization import bm25
 from gensim.models import KeyedVectors
 from qlm import QLM
-from sdr import SDR
 from aes import AES
 from sdr_fullvec import SDR_full
 import numpy
@@ -217,7 +216,6 @@ def sdr_full_rerank_results(run_file, method, eval_file, collection_dic, data_di
     storing_dir = os.path.join(data_dir, "output", method, "stored_weights")
     if not os.path.exists(storing_dir):
         os.mkdir(storing_dir)
-
     with open(run_file) as run:
         for line in tqdm(run):
             data_dict = json.loads(line)
@@ -364,45 +362,8 @@ if __name__ == "__main__":
         collection_file = os.path.join("collection", "weighted1_bow_cased_lee.jsonl")
         collection_dict = get_collection(collection_file)
         bm25_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-
     if method=="BM25_BOC_WORD":
         collection_file = os.path.join("collection", "weighted1_boc_word.jsonl")
-        collection_dict = get_collection(collection_file)
-        bm25_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-
-    if method=="BM25_BOC_WORD_L":
-        collection_file = os.path.join("collection", "weighted1_boc_word_lower.jsonl")
-        collection_dict = get_collection(collection_file)
-        bm25_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="BM25_BOC_SPLITED":
-        collection_file = os.path.join("collection", "weighted1_boc_v2_splited2.jsonl")
-        collection_dict = get_collection(collection_file)
-        bm25_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-
-    if method=="BM25_BOC_V16":
-        #type ="original"
-        collection_file = os.path.join("collection", "weighted1_boc_v16.jsonl")
-        collection_dict = get_collection(collection_file)
-        bm25_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="BM25_BOC_NCBO":
-        collection_file = os.path.join("collection", "weighted1_boc_ncbo.jsonl")
-        collection_dict = get_collection(collection_file)
-        bm25_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-
-    if method=="BM25_BOC_UMLS_TERM":
-        collection_file = os.path.join("collection", "weighted1_boc_term_umls.jsonl")
-        collection_dict = get_collection(collection_file)
-        bm25_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="BM25_BOC_UMLS_TERMS":
-        collection_file = os.path.join("collection", "weighted1_boc_terms_umls.jsonl")
-        collection_dict = get_collection(collection_file)
-        bm25_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="BM25_BOC_UMLS_V2":
-        collection_file = os.path.join("collection", "weighted1_umls_v2.jsonl")
-        collection_dict = get_collection(collection_file)
-        bm25_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="BM25_BOC_UMLS_N":
-        collection_file = os.path.join("collection", "weighted1_umls_n.jsonl")
         collection_dict = get_collection(collection_file)
         bm25_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
 
@@ -410,57 +371,17 @@ if __name__ == "__main__":
         collection_file = os.path.join("collection", "weighted1_bow.jsonl")
         collection_dict = get_collection(collection_file)
         qlm_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="QLM_BOW_PUN_LEE":
-        collection_file = os.path.join("collection", "weighted1_bow_punc_removed_lee.jsonl")
-        collection_dict = get_collection(collection_file)
-        qlm_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
     if method=="QLM_BOW_LEE":
         type = "original"
         collection_file = os.path.join("collection", "weighted1_bow_cased_lee.jsonl")
-        collection_dict = get_collection(collection_file)
-        qlm_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="QLM_BOW_LEE2":
-        collection_file = os.path.join("collection", "weighted1_bow_cased_lee.jsonl")
-        collection_dict = get_collection(collection_file)
-        qlm_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="QLM_BOW_BOC":
-        collection_file = os.path.join("collection", "weighted1_bow_boc_word.jsonl")
-        collection_dict = get_collection(collection_file)
-        qlm_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="QLM_BOW_CASED":
-        collection_file = os.path.join("collection", "weighted1_bow_original_cased.jsonl")
         collection_dict = get_collection(collection_file)
         qlm_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
     if method=="QLM_BOC_WORD":
         collection_file = os.path.join("collection", "weighted1_boc_word.jsonl")
         collection_dict = get_collection(collection_file)
         qlm_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="QLM_BOC_WORD2":
-        collection_file = os.path.join("collection", "weighted1_boc_word_2.jsonl")
-        collection_dict = get_collection(collection_file)
-        qlm_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="QLM_BOW_O":
-        type = "original"
-        collection_file = os.path.join("collection", "weighted1_bow_original.jsonl")
-        collection_dict = get_collection(collection_file)
-        qlm_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="QLM_BOC_V2":
-        collection_file = os.path.join("collection", "weighted1_boc_v2.jsonl")
-        collection_dict = get_collection(collection_file)
-        qlm_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="QLM_BOC":
-        collection_file = os.path.join("collection", "weighted1_boc.jsonl")
-        collection_dict = get_collection(collection_file)
-        qlm_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="QLM_BOC_UMLS":
-        collection_file = os.path.join("collection", "weighted1_umls_original_lower.jsonl")
-        collection_dict = get_collection(collection_file)
-        qlm_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
+
     if method=="SDR_BOW_FULL":
-        collection_file = os.path.join("collection", "weighted1_bow.jsonl")
-        collection_dict = get_collection(collection_file)
-        sdr_full_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="SDR_BOW_FULL2":
         collection_file = os.path.join("collection", "weighted1_bow.jsonl")
         collection_dict = get_collection(collection_file)
         sdr_full_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
@@ -468,22 +389,9 @@ if __name__ == "__main__":
         collection_file = os.path.join("collection", "weighted1_boc_word.jsonl")
         collection_dict = get_collection(collection_file)
         sdr_full_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="SDR_BOC_FULL_WORD2":
-        collection_file = os.path.join("collection", "weighted1_boc_word_2.jsonl")
-        collection_dict = get_collection(collection_file)
-        sdr_full_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
     if method=="SDR_BOW_FULL_LEE":
         type = "original"
         collection_file = os.path.join("collection", "weighted1_bow_cased_lee.jsonl")
-        collection_dict = get_collection(collection_file)
-        sdr_full_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-    if method=="SDR_BOW_FULL_LEE2":
-        collection_file = os.path.join("collection", "weighted1_bow_cased_lee.jsonl")
-        collection_dict = get_collection(collection_file)
-        sdr_full_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
-
-    if method=="SDR_BOC_UMLS_FULL":
-        collection_file = os.path.join("collection", "weighted1_umls_original_lower.jsonl")
         collection_dict = get_collection(collection_file)
         sdr_full_rerank_results(run_file, method, eval_file, collection_dict, DATA_DIR, test_set, format, type)
 

@@ -9,7 +9,6 @@ import random
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--input_qrel", type=str, default ="qrel_eval/2019/qrels_content_all.txt")
-parser.add_argument("--input_eval", type=str, default = "qrel_eval/2019/qrels_content_all.txt")
 parser.add_argument("--input_test_eval", type=str, default = "qrel_eval/2019/qrels_content_test.txt")
 parser.add_argument("--DATA_DIR", type=str, default="2019/multiple")
 parser.add_argument("--percentage", type=float, default=0.2)
