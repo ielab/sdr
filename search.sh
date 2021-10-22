@@ -5,7 +5,6 @@ python3 search.py \
 --METHOD BM25_BOW \
 --format $format \
 --DATA_DIR $DATA_DIR
---collection
 
 python3 search.py \
 --METHOD QLM_BOW \
@@ -13,18 +12,54 @@ python3 search.py \
 --DATA_DIR $DATA_DIR
 
 python3 search.py \
---METHOD _BOW \
+--METHOD SDR_BOW_FULL \
 --format $format \
 --DATA_DIR $DATA_DIR
 
 python3 search.py \
---METHOD BM25_BOW \
+--METHOD BM25_BOC_WORD \
 --format $format \
 --DATA_DIR $DATA_DIR
 
 python3 search.py \
---METHOD BM25_BOW \
+--METHOD QLM_BOC_WORD \
 --format $format \
 --DATA_DIR $DATA_DIR
+
+python3 search.py \
+--METHOD SDR_BOC_FULL_WORD \
+--format $format \
+--DATA_DIR $DATA_DIR
+
+python3 search.py \
+--METHOD AES_BOW \
+--format $format \
+--DATA_DIR $DATA_DIR
+
+python3 search.py \
+--METHOD AES_BOW_P \
+--format $format \
+--DATA_DIR $DATA_DIR
+
+python3 aes_sdr_combine.py --DATA_DIR $DATA_DIR \
+--AES_METHOD AES_BOW \
+--SDR_METHOD SDR_BOW_FULL \
+--COM_METHOD AES_BOW_AES
+
+python3 aes_sdr_combine.py --DATA_DIR $DATA_DIR \
+--AES_METHOD AES_BOW_P \
+--SDR_METHOD SDR_BOW_FULL \
+--COM_METHOD AES_BOW_AES_P
+
+python3 aes_sdr_combine.py --DATA_DIR $DATA_DIR \
+--AES_METHOD AES_BOW \
+--SDR_METHOD SDR_BOC_FULL_WORD \
+--COM_METHOD AES_BOC_AES
+
+python3 aes_sdr_combine.py --DATA_DIR $DATA_DIR \
+--AES_METHOD AES_BOW_P \
+--SDR_METHOD SDR_BOC_FULL_WORD \
+--COM_METHOD AES_BOC_AES_P
+
 
 

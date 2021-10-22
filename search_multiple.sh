@@ -1,23 +1,43 @@
-#!/bin/bash
-#SBATCH -N 1
-#SBATCH --job-name=SR
-#SBATCH --mem-per-cpu=10G
-#SBATCH -o logs/5_print.txt
-#SBATCH -e logs/5_error.txt
-#SBATCH --partition=gpu
-#SBATCH --gres=gpu:0
-#SBATCH --cpus-per-task=5
+DATASET=$1
+format = $2
 
-module load anaconda/3.6
-source activate /scratch/itee/uqswan37/Reproduce_SR/envs/
-module load cuda/10.0.130
-module load gnu/5.4.0
-module load mvapich2
-
-
-method=$1
 
 python3 search_multiple.py \
---METHOD $method \
---format all \
---DATA_DIR 2017/multiple/
+--METHOD SDR_BOW_FULL \
+--format $format \
+--DATA_DIR $DATA_DIR
+
+python3 search_multiple.py \
+--METHOD SDR_BOC_FULL_WORD \
+--format $format \
+--DATA_DIR $DATA_DIR
+
+python3 search_multiple.py \
+--METHOD AES_BOW \
+--format $format \
+--DATA_DIR $DATA_DIR
+
+python3 search_multiple.py \
+--METHOD AES_BOW_P \
+--format $format \
+--DATA_DIR $DATA_DIR
+
+python3 aes_sdr_combine.py --DATA_DIR $DATA_DIR \
+--AES_METHOD AES_BOW \
+--SDR_METHOD SDR_BOW_FULL \
+--COM_METHOD AES_BOW_AES
+
+python3 aes_sdr_combine.py --DATA_DIR $DATA_DIR \
+--AES_METHOD AES_BOW_P \
+--SDR_METHOD SDR_BOW_FULL \
+--COM_METHOD AES_BOW_AES_P
+
+python3 aes_sdr_combine.py --DATA_DIR $DATA_DIR \
+--AES_METHOD AES_BOW \
+--SDR_METHOD SDR_BOC_FULL_WORD \
+--COM_METHOD AES_BOC_AES
+
+python3 aes_sdr_combine.py --DATA_DIR $DATA_DIR \
+--AES_METHOD AES_BOW_P \
+--SDR_METHOD SDR_BOC_FULL_WORD \
+--COM_METHOD AES_BOC_AES_P

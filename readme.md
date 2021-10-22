@@ -66,7 +66,56 @@ python3 boc_extraction.py --input_collection bow_collection --input_ncbo_collect
 
 ### RQ1: Does the effectiveness of SDR generalise beyond the CLEF TAR 2017 dataset?
 
-For this question, we can run our 
+For RQ1, single seed driven results are aquired for clef tar 2017, 2018, 2019, for this please run the following command.
+```
+bash search.sh 2017_single_data_dir all
+bash search.sh 2018_single_data_dir test
+bash search.sh 2019_single_data_dir test
+```
+to get the run_file of all three years single seed run_file with all method.
+
+Then evaluation by:
+```
+bash evaluation_full.sh 2017_single_data_dir all
+bash evaluation_full.sh 2018_single_data_dir test
+bash evaluation_full.sh 2019_single_data_dir test
+```
+to print out evaluation measures and with save evaluation measurement file in corresponding eval folder
+
+
+### RQ2: What is the impact of using multiple seed studies collectively on the effectiveness of SDR?
+For RQ1, multiple seed driven results are aquired for clef tar 2017, 2018, 2019, for this please run the following command.
+```
+bash search_multiple.sh 2017_multiple_data_dir all
+bash search_multiple.sh 2018_multiple_data_dir test
+bash search_multiple.sh 2019_multiple_data_dir test
+```
+to get the run_file of all three years multiple seed run_file with all method.
+
+Then evaluation by:
+```
+bash evaluation_full.sh 2017_multiple_data_dir all
+bash evaluation_full.sh 2018_multiple_data_dir test
+bash evaluation_full.sh 2019_multiple_data_dir test
+```
+to print out evaluation measures and also save evaluation measurement file in corresponding eval folder
+
+### RQ2: To what extent do seed studies impact the ranking stability of single- and multi-SDR?
+
+For this question, we need to use the results aquired from last two steps, in which we can generate variability graph by using command:
+```
+python3 graph_maaking.distribution_graph.py --year 2017 --type oracle 
+python3 graph_maaking.distribution_graph.py --year 2018 --type oracle 
+python3 graph_maaking.distribution_graph.py --year 2019 --type oracle 
+```
+to get distribution graph of the three years.
+
+
+
+
+
+
+
 
 
 
