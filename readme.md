@@ -1,8 +1,8 @@
-#ECIR Reproducibility Paper: Seed-driven Document Ranking for Systematic Reviews: A Reproducibility Study
+# ECIR Reproducibility Paper: Seed-driven Document Ranking for Systematic Reviews: A Reproducibility Study
 
 This code corresponds to the reproducibility paper: "Seed-driven Document Ranking for Systematic Reviews: A Reproducibility Study" and every results gathered from paper are generated using the code.
 
-###Enviroment setup:
+### Enviroment setup:
 - This project is implemented and tested only for python version 3.6.12, other python versions are not tested and can not ensure the full run of the results.
 
 First please install the required packages:
@@ -10,7 +10,7 @@ First please install the required packages:
 pip3 install -r requirements.txt
 ```
 
-###Query&Eval generation:
+### Query&Eval generation:
 First please clone TAR repository using command
 ```
 git clone https://github.com/CLEF-TAR/tar.git
