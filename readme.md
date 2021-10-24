@@ -104,9 +104,9 @@ to print out evaluation measures and also save evaluation measurement files in t
 
 For this question, we need to use the results acquired from the last two steps, in which we can generate variability graphs by using the following command:
 ```
-python3 graph_maaking.distribution_graph.py --year 2017 --type oracle 
-python3 graph_maaking.distribution_graph.py --year 2018 --type oracle 
-python3 graph_maaking.distribution_graph.py --year 2019 --type oracle 
+python3 graph_maaking/distribution_graph.py --year 2017 --type oracle 
+python3 graph_maaking/distribution_graph.py --year 2018 --type oracle 
+python3 graph_maaking/distribution_graph.py --year 2019 --type oracle 
 ```
 to get distribution graphs of the three years.
 
