@@ -1,6 +1,6 @@
 # ECIR Reproducibility Paper: Seed-driven Document Ranking for Systematic Reviews: A Reproducibility Study
 
-This code corresponds to the reproducibility paper: "Seed-driven Document Ranking for Systematic Reviews: A Reproducibility Study" and all ressults gathered from the paper are generated using the code.
+This code corresponds to the reproducibility paper: "Seed-driven Document Ranking for Systematic Reviews: A Reproducibility Study" and all results gathered from the paper are generated using the code.
 
 ### Environment setup:
 - This project is implemented and tested only for python version 3.6.12, other python versions are not tested and can not ensure the full run of the results.
