@@ -55,9 +55,9 @@ python3 collection_processing.py --input_collection acquired_collection_file --o
 ```
 
 Then for BOC collection generation:
-- first ensure to check [Quickumls](https://github.com/Georgetown-IR-Lab/QuickUMLS) to gather umls data.
-- second ensure to register on [NCBO](https://bioportal.bioontology.org/login?redirect=https%3A%2F%2Fbioportal.bioontology.org%2Fhelp) to get api keys, and fill in these keys in ncbo_request_word.py
-For BOC collection then, run the following command to generation boc_collection:
+- First ensure to check [Quickumls](https://github.com/Georgetown-IR-Lab/QuickUMLS) to gather umls data.
+- Second ensure to register on [NCBO](https://bioportal.bioontology.org/login?redirect=https%3A%2F%2Fbioportal.bioontology.org%2Fhelp) to get api keys, and fill in these keys in ncbo_request_word.py
+- For BOC collection then, run the following command to generation boc_collection:
 ```
 python3 ncbo_request_word.py --input_collection your_generated_bow_collection --num_workers for_multi_procesing --generated_collection output_dir_ncbo
 cat output_dir/* > ncbo.tsv
