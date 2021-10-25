@@ -112,3 +112,12 @@ python3 graph_maaking/distribution_graph.py --year 2019 --type oracle
 ```
 to get distribution graphs of the three years.
 
+### Generated run files:
+
+Run files are generated and stored in [here](https://zenodo.org/record/5595590#.YXZM6i0Rr0o), feel free to download for verification or futher research needs.
+```
+Example:
+run_files/2017/all: 2017 single seed results file
+run_files/2017/multiple: 2017 multiple seed results file
+
+```
